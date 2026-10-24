@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reading History | DreavelleVerse</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="reading-history-page">
+
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                DreavelleVerse
+            </a>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="discover.html">Discover</a>
+            <a href="library.html">Library</a>
+            <a href="write.html">Write</a>
+            <a href="notifications.html" id="notifications-nav-link">Notifications</a>
+            <a href="login.html" id="login-nav-link">Log In</a>
+
+<a
+    href="signup.html"
+    class="signup-link"
+    id="signup-nav-link"
+>
+    Sign Up
+</a>
+
+<span
+    id="user-nav"
+    style="display: none;"
+>
+    <span id="user-display-name"></span>
+
+    <button
+        type="button"
+        id="logout-button"
+    >
+        Log Out
+    </button>
+</span>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="discover-hero">
+
+            <p class="reader-welcome">
+                Your Reading Journey
+            </p>
+
+            <h2>Reading History</h2>
+
+            <p>
+                Revisit the stories and chapters you've read.
+            </p>
+
+        </section>
+
+        <section class="featured-section">
+
+            <div class="section-heading">
+                <h2>Recently Read Chapters</h2>
+
+                <p>
+                    Chapters you've opened will appear here.
+                </p>
+            </div>
+
+            <div
+                id="reading-history-list"
+                class="reading-history-list"
+            >
+            </div>
+
+        </section>
+
+    </main>
+
+   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+
+</body>
+
+</html>

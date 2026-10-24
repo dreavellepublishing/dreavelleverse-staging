@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Profile | DreavelleVerse</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="profile-page">
+
+    <header>
+
+        <div class="header-brand">
+            <h1>DreavelleVerse</h1>
+            <p>Where Stories Come Alive.</p>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="discover.html">Discover</a>
+            <a href="library.html">Library</a>
+            <a href="write.html">Write</a>
+
+            <a
+                href="notifications.html"
+                id="notifications-nav-link"
+            >
+                Notifications
+            </a>
+
+            <a
+                href="login.html"
+                id="login-nav-link"
+            >
+                Log In
+            </a>
+
+            <a
+                href="signup.html"
+                class="signup-link"
+                id="signup-nav-link"
+            >
+                Sign Up
+            </a>
+
+            <span
+                id="user-nav"
+                style="display: none;"
+            >
+                <span id="user-display-name"></span>
+
+                <button
+                    type="button"
+                    id="logout-button"
+                >
+                    Log Out
+                </button>
+            </span>
+        <a href="messages.html">Messages</a> <a href="announcements.html">Announcements</a> </nav>
+
+    </header>
+
+    <main>
+
+        <section class="profile-section">
+
+            <p>Welcome Home</p>
+
+            <h2>My Profile</h2>
+
+            <p>
+                Your DreavelleVerse reading and writing
+                journey lives here.
+            </p>
+
+            <div class="profile-card">
+
+                <div class="profile-picture-area">
+
+                    <!-- Profile Cover Photo -->
+
+<div class="profile-cover-area">
+
+    <div
+        class="profile-cover-placeholder"
+        id="profile-cover-placeholder"
+    >
+        Add a cover photo
+    </div>
+
+    <img
+        id="profile-cover-photo"
+        class="profile-cover-photo"
+        alt="Profile cover photo"
+        style="display: none;"
+    >
+
+    <label
+        for="profile-cover-input"
+        class="profile-cover-button"
+        id="profile-cover-button"
+    >
+        Add Cover Photo
+    </label>
+
+    <input
+        type="file"
+        id="profile-cover-input"
+        accept="image/*"
+        hidden
+    >
+
+</div>
+
+    <div class="profile-picture-placeholder" id="profile-picture-placeholder">
+        G
+    </div>
+
+    <img
+        id="profile-picture"
+        class="profile-picture"
+        alt="Profile picture"
+        style="display: none;"
+    >
+
+    <label
+        for="profile-picture-input"
+        class="profile-picture-button"
+    >
+        Change Photo
+    </label>
+
+    <input
+        type="file"
+        id="profile-picture-input"
+        accept="image/*"
+        hidden
+    >
+
+</div>
+                <h3 id="profile-display-name">
+                    DreavelleVerse Reader
+                </h3>
+
+                <p id="profile-email">
+                    Your account email
+                </p>
+                <div class="profile-bio-section">
+
+    <p
+        id="profile-bio"
+        class="profile-bio"
+    >
+        Tell readers a little about yourself.
+    </p>
+
+    <button
+        type="button"
+        id="edit-bio-button"
+        class="edit-bio-button"
+    >
+        Add Bio
+    </button>
+
+    <div
+        id="edit-bio-form"
+        class="edit-bio-form"
+        style="display: none;"
+    >
+        <label for="bio-input">
+            About Me
+        </label>
+
+        <textarea
+            id="bio-input"
+            maxlength="300"
+            placeholder="Tell readers and writers a little about yourself..."
+        ></textarea>
+
+        <p class="bio-character-count">
+            <span id="bio-character-count">0</span>/300
+        </p>
+
+        <div class="edit-bio-actions">
+
+            <button
+                type="button"
+                id="save-bio-button"
+            >
+                Save Bio
+            </button>
+
+            <button
+                type="button"
+                id="cancel-bio-button"
+            >
+                Cancel
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+                <section class="profile-followers" aria-label="Account followers" style="margin: 18px 0; padding: 14px; border: 1px solid #c9dfe6; border-radius: 10px;">
+                    <h3 style="margin: 0 0 8px;">Followers</h3>
+                    <p style="margin: 0;" id="profile-followers-count" role="status">Loading followers...</p>
+                    <p style="margin: 8px 0 0; font-size: 0.9rem;">Readers and writers can follow accounts.</p>
+                    <div id="dv-my-social" class="dv-social-root"></div>
+                </section>
+
+                <button type="button" id="edit-profile-button" class="edit-profile-button">Edit Profile</button>
+
+<!-- Theme Preference -->
+
+<div class="theme-preference">
+
+    <h3>Theme Color</h3>
+
+    <p>
+        Personalize DreavelleVerse with your favorite color.
+    </p>
+
+    <div class="theme-options">
+
+        <button
+            type="button"
+            class="theme-option theme-blue"
+            data-theme="blue"
+            title="Dreavelle Blue"
+        >
+            <span></span>
+            Blue
+        </button>
+
+        <button
+            type="button"
+            class="theme-option theme-purple"
+            data-theme="purple"
+            title="Lavender Purple"
+        >
+            <span></span>
+            Purple
+        </button>
+
+        <button
+            type="button"
+            class="theme-option theme-pink"
+            data-theme="pink"
+            title="Rose Pink"
+        >
+            <span></span>
+            Pink
+        </button>
+
+        <button
+            type="button"
+            class="theme-option theme-green"
+            data-theme="green"
+            title="Emerald Green"
+        >
+            <span></span>
+            Green
+        </button>
+
+        <button
+            type="button"
+            class="theme-option theme-burgundy"
+            data-theme="burgundy"
+            title="Warm Burgundy"
+        >
+            <span></span>
+            Burgundy
+        </button>
+
+        <button
+            type="button"
+            class="theme-option theme-navy"
+            data-theme="navy"
+            title="Midnight Navy"
+        >
+            <span></span>
+            Navy
+        </button>
+
+    </div>
+
+</div>
+
+<div
+    id="edit-profile-form"
+    class="edit-profile-form"
+    style="display: none;"
+>
+    <label for="edit-display-name">
+        Display Name
+    </label>
+
+    <input
+        type="text"
+        id="edit-display-name"
+        maxlength="40"
+    >
+
+    <div class="edit-profile-actions">
+        <button
+            type="button"
+            id="save-profile-button"
+        >
+            Save Changes
+        </button>
+
+        <button
+            type="button"
+            id="cancel-profile-button"
+        >
+            Cancel
+        </button>
+    </div>
+</div>
+
+            </div>
+
+            <div class="profile-actions">
+
+    <a href="library.html" class="profile-action-card">
+        <h3>My Library</h3>
+        <p>
+            View the stories you've saved
+            and continue reading.
+        </p>
+    </a>
+
+    <a href="reading-history.html" class="profile-action-card">
+        <h3>Reading History</h3>
+        <p>
+            Revisit chapters you've recently read.
+        </p>
+    </a>
+
+    <a href="write.html" class="profile-action-card">
+        <h3>My Writing</h3>
+        <p>
+            Create, continue, and manage your stories.
+        </p>
+    </a>
+
+    <a href="notifications.html" class="profile-action-card">
+        <h3>Notifications</h3>
+        <p>
+            See updates from the stories you follow.
+        </p>
+    </a>
+    <a href="admin-reports.html" id="report-management-link" class="profile-action-card" hidden style="display:none;">
+        <h3>Report Management</h3>
+        <p>Review and manage submitted story reports.</p>
+    </a>
+    <a href="settings.html" class="profile-action-card">
+    <h3>Settings</h3>
+    <p>
+        Manage your preferences, appearance, and notifications.
+    </p>
+</a>
+
+</div>
+
+        </section>
+
+    </main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+    <script src="report-profile-link.js?v=20261022-1"></script>
+
+</body>
+
+</html>

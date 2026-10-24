@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Library | DreavelleVerse</title>
+    <link rel="stylesheet" href="style.css?v=20261023-suggestions-grid">
+</head>
+
+<body id="library-page">
+
+    <header>
+        <div class="header-brand">
+            <h1>DreavelleVerse</h1>
+            <p>Where Stories Come Alive.</p>
+        </div>
+
+        <nav>
+    <a href="index.html">Home</a>
+    <a href="discover.html">Discover</a>
+    <a href="library.html">Library</a>
+    <a href="write.html">Write</a>
+    <a href="notifications.html" id="notifications-nav-link">
+    Notifications
+</a>
+    <a href="login.html" id="login-nav-link">Log In</a>
+
+<a
+    href="signup.html"
+    class="signup-link"
+    id="signup-nav-link"
+>
+    Sign Up
+</a>
+
+<span
+    id="user-nav"
+    style="display: none;"
+>
+    <span id="user-display-name"></span>
+
+    <button
+        type="button"
+        id="logout-button"
+    >
+        Log Out
+    </button>
+</span>
+</nav>
+    </header>
+
+    <main>
+
+       <section class="discover-hero">
+
+    <p class="reader-welcome">
+        Your Reading Space
+    </p>
+
+    <h2>My Library</h2>
+            <p>
+                Keep the stories you love close and continue your reading journey anytime.
+            </p>
+<div class="story-search">
+    <input
+        type="text"
+        id="library-search-input"
+        placeholder="Search by title, author, or genre..."
+    >
+    <button type="button" id="library-search-button">
+        Search
+    </button>
+</div>
+        </section>
+
+        <section class="featured-section">
+
+    <div class="section-heading">
+    <h2>Saved Stories</h2>
+    <p>Stories you’ve added to your library will appear here.</p>
+</div>
+
+
+ <div class="story-grid" id="library-stories">
+</div>
+
+</section>
+
+<!-- Daily Suggested Stories -->
+<section class="featured-section" id="library-suggestions-section">
+
+    <div class="section-heading">
+        <h2>✨ Discover Your Next Favorite Story</h2>
+        <p>
+            Explore five stories selected for you today.
+            New recommendations appear every day to help
+            more DreavelleVerse writers get discovered.
+        </p>
+    </div>
+
+    <div
+        class="library-suggestions-grid"
+        id="library-suggested-stories"
+        aria-live="polite"
+    >
+        <p>Finding stories for you...</p>
+    </div>
+
+</section>
+
+    </main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js?v=20261024-chapter-titles-fix"></script>
+</body>
+
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Read Story | DreavelleVerse</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-brand">
+        <h1>DreavelleVerse</h1>
+        <p>Where Stories Come Alive.</p>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="discover.html">Discover</a>
+       <a href="library.html">Library</a>
+        <a href="write.html">Write</a>
+        <a href="notifications.html" id="notifications-nav-link">Notifications</a>
+        <a href="login.html" id="login-nav-link">Log In</a>
+
+<a
+    href="signup.html"
+    class="signup-link"
+    id="signup-nav-link"
+>
+    Sign Up
+</a>
+
+<span
+    id="user-nav"
+    style="display: none;"
+>
+    <span id="user-display-name"></span>
+
+    <button
+        type="button"
+        id="logout-button"
+    >
+        Log Out
+    </button>
+</span>
+    </nav>
+
+</header>
+
+
+<main>
+
+<section class="reader-story">
+
+    <div class="story-reader-card">
+
+        <h1 id="reader-story-title">
+            Story Title
+        </h1>
+<p id="reader-story-author"></p>
+
+        <div class="story-cover-placeholder" id="reader-story-cover">
+
+            Story Cover
+
+        </div>
+
+<p id="reader-story-description">
+    Story description will appear here.
+</p>
+
+<p id="reader-story-genre"></p>
+
+<p id="reader-story-tags"></p>
+
+<section class="dv-public-story-stats" aria-label="Story popularity statistics">
+  <div class="dv-public-stat"><span aria-hidden="true">📖</span><strong id="dv-public-reads">—</strong><span>Reads</span></div>
+  <div class="dv-public-stat"><span aria-hidden="true">❤️</span><strong id="dv-public-likes">—</strong><span>Likes</span></div>
+  <div class="dv-public-stat"><span aria-hidden="true">👥</span><strong id="dv-public-follows">—</strong><span>Follows</span></div>
+</section>
+<style>
+.dv-public-story-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0 22px;max-width:650px}
+.dv-public-stat{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:15px 8px;border:1px solid #e8d8ee;border-radius:12px;background:#fbf6fd;color:#35435a;text-align:center;font-size:13px}
+.dv-public-stat strong{font-size:24px;color:#8546a3;font-weight:750;font-variant-numeric:tabular-nums}
+@media(max-width:420px){.dv-public-story-stats{gap:7px}.dv-public-stat{padding:11px 4px}.dv-public-stat strong{font-size:20px}}
+</style>
+
+<button type="button" id="add-to-library-button">
+    Add to Library
+</button>
+
+<button
+    type="button"
+    id="like-story-button"
+    class="like-story-button"
+>
+    ♡ Like Story
+</button>
+<span id="story-like-count">0 likes</span>
+
+<button
+    type="button"
+    id="follow-story-button"
+    class="follow-story-button"
+>
+    + Follow Story
+</button>
+
+<button
+  type="button"
+  id="report-story-button"
+  style="background: #fff; color: #b42318; border: 1px solid #b42318; border-radius: 6px; padding: 10px 16px; cursor: pointer;"
+>
+  ⚑ Report Story
+</button>
+
+<a
+    href="read-chapter.html"
+    id="continue-reading-button"
+    class="start-reading-button"
+    style="display: none;"
+>
+    Continue Reading
+</a>
+<p
+    id="reading-progress-text"
+    class="reading-progress-text"
+    style="display: none;"
+></p>
+<div
+    id="reading-progress-bar"
+    class="reading-progress-bar"
+    style="display: none;"
+>
+    <div
+        id="reading-progress-fill"
+        class="reading-progress-fill"
+    ></div>
+</div>
+<h2>
+    <div class="story-rating" id="story-rating">
+
+    <p class="story-rating-label">
+        Rate this story
+    </p>
+
+    <div class="story-rating-stars">
+        <button type="button" class="rating-star" data-rating="1">☆</button>
+        <button type="button" class="rating-star" data-rating="2">☆</button>
+        <button type="button" class="rating-star" data-rating="3">☆</button>
+        <button type="button" class="rating-star" data-rating="4">☆</button>
+        <button type="button" class="rating-star" data-rating="5">☆</button>
+    </div>
+
+    <p class="story-rating-message" id="story-rating-message"></p>
+
+</div>
+<div class="story-review" id="story-review">
+
+    <h3>Leave a Review</h3>
+
+    <textarea
+        id="story-review-input"
+        class="story-review-input"
+        placeholder="Share your thoughts about this story..."
+    ></textarea>
+
+    <button
+        type="button"
+        id="save-review-button"
+        class="save-review-button"
+    >
+        Post Review
+    </button>
+
+    <p
+        id="story-review-message"
+        class="story-review-message"
+    ></p>
+
+</div>
+
+    Chapters
+</h2>
+        <div id="reader-chapters">
+
+        </div>
+
+
+    </div>
+
+</section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js?v=20261022-blurb-fix"></script>
+<script src="report-story.js" defer></script>
+<script src="reader-story-stats.js?v=20261024" defer></script>
+
+</body>
+
+</html>

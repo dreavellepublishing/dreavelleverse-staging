@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DreavelleVerse | Where Stories Come Alive</title>
+    <link rel="stylesheet" href="style.css?v=20261024-reading-gate">
+</head>
+
+<body id="home-page">
+
+    <header>
+    <div class="header-brand">
+        <h1>DreavelleVerse</h1>
+        <p>Where Stories Come Alive.</p>
+    </div>
+
+    <nav>
+        <a href="#">Home</a>
+      <a href="discover.html">Discover</a>
+        <a href="library.html">Library</a>
+        <a href="write.html">Write</a>
+        <a href="notifications.html" id="notifications-nav-link">Notifications</a>
+       <a href="login.html" id="login-nav-link">Log In</a>
+
+<a
+    href="signup.html"
+    class="signup-link"
+    id="signup-nav-link"
+>
+    Sign Up
+</a>
+
+<span
+    id="user-nav"
+    style="display: none;"
+>
+    <span id="user-display-name"></span>
+
+    <button
+        type="button"
+        id="logout-button"
+    >
+        Log Out
+    </button>
+</span>
+   <a href="messages.html">Messages</a>
+<a href="announcements.html">Announcements</a>
+<a href="promotion-planner.html">Promotions</a>
+</nav>
+</header>
+
+    <main>
+
+        <section class="home-intro" aria-labelledby="home-intro-title">
+            <p class="home-eyebrow">WELCOME TO DREAVELLEVERSE</p>
+            <h2 id="home-intro-title">Where Your Next Favorite Story Begins</h2>
+            <p>Discover unforgettable worlds and the writers bringing them to life.</p>
+        </section>
+
+        <section class="home-banner-section" aria-labelledby="home-banner-title">
+            <div class="home-section-heading">
+                <div><p class="home-eyebrow">THE MAIN STAGE</p><h2 id="home-banner-title">🌟 Big Banner Spotlight</h2></div>
+                <a href="discover.html" class="home-view-all">Explore stories →</a>
+            </div>
+            <div class="home-banner-frame">
+                <button type="button" class="home-nav-arrow" id="home-banner-prev" aria-label="Previous banner" hidden>‹</button>
+                <div id="home-banner-content" class="home-banner-content" aria-live="polite">
+                    <div class="home-banner-fallback"><p class="home-eyebrow">DREAVELLEVERSE</p><h3>Every Story Deserves to Be Discovered.</h3><p>Find your next adventure, explore new voices, or start writing your own.</p><div class="home-banner-actions"><a class="home-primary-button" href="discover.html">Explore Stories</a><a class="home-secondary-button" href="write.html">Start Writing</a></div></div>
+                </div>
+                <button type="button" class="home-nav-arrow" id="home-banner-next" aria-label="Next banner" hidden>›</button>
+            </div>
+            <p class="home-banner-status" id="home-banner-status" aria-live="polite"></p>
+        </section>
+
+        <section class="home-small-section" aria-labelledby="home-small-title">
+            <div class="home-section-heading"><div><p class="home-eyebrow">REDEEMED TICKET FEATURES</p><h2 id="home-small-title">✨ Small Spotlight Promotions</h2><p>Meet the stories currently in the spotlight.</p></div><a href="discover.html" class="home-view-all">See all promotions →</a></div>
+            <div class="home-small-shell">
+                <button type="button" class="home-nav-arrow home-small-arrow" id="home-small-prev" aria-label="Previous small promotions" hidden>‹</button>
+                <div id="home-small-content" class="home-small-grid" aria-live="polite"><p class="home-small-empty">Loading active promotions…</p></div>
+                <button type="button" class="home-nav-arrow home-small-arrow" id="home-small-next" aria-label="Next small promotions" hidden>›</button>
+            </div>
+            <p class="home-banner-status" id="home-small-status" aria-live="polite"></p>
+        </section>
+
+        <section class="home-bottom-cta"><p>Have a story to tell?</p><a href="write.html">Start Writing →</a><a href="promotion-planner.html">Promote Your Story →</a></section>
+
+    </main>
+
+    
+<footer style="text-align: center; padding: 20px;">
+  <a href="terms.html">Terms of Service</a>
+  <span style="margin: 0 10px;">|</span>
+  <a href="privacy.html">Privacy Policy</a>
+  
+<span style="margin: 0 10px;">|</span>
+<a href="contact.html">Contact & Support</a>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js?v=20261023-discover-redesign"></script>
+    <script src="home-promotions.js?v=20261023-home-showcase"></script>
+<script src="reading-access.js?v=20261024-gate1"></script>
+</body>
+
+</html>
+

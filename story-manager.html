@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Story | DreavelleVerse</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="story-manager-page">
+
+    <header>
+        <div class="header-brand">
+            <h1>DreavelleVerse</h1>
+            <p>Where Stories Come Alive.</p>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="discover.html">Discover</a>
+            <a href="library.html">Library</a>
+            <a href="write.html">Write</a>
+            <a href="notifications.html" id="notifications-nav-link">Notifications</a>
+            <a href="login.html" id="login-nav-link">Log In</a>
+
+<a
+    href="signup.html"
+    class="signup-link"
+    id="signup-nav-link"
+>
+    Sign Up
+</a>
+
+<span
+    id="user-nav"
+    style="display: none;"
+>
+    <span id="user-display-name"></span>
+
+    <button
+        type="button"
+        id="logout-button"
+    >
+        Log Out
+    </button>
+</span>
+        <a href="messages.html">Messages</a> <a href="announcements.html">Announcements</a> </nav>
+    </header>
+
+    <main>
+
+        <section class="story-manager-section">
+
+            <div class="story-manager-container">
+
+                <p class="writer-greeting">
+                    Your Story
+                </p>
+
+                <div class="story-manager-heading">
+
+                   <div class="manager-cover-container">
+    <img
+        id="manager-story-cover"
+        class="manager-story-cover"
+        alt="Story Book Cover"
+        style="display: none;"
+    >
+</div>
+                    <div class="manager-story-details">
+                        <h2 class="manager-story-title">
+                            Untitled Story
+                        </h2>
+<p class="manager-story-description"></p>
+<p class="manager-story-author"></p>
+<p class="manager-story-genre"></p>
+<p class="manager-story-tags"></p>
+                      
+                        </div>
+                        <p class="manager-story-status">
+                            Story Dashboard
+                        </p>
+                        <div class="story-dashboard-stats">
+
+    <div class="dashboard-stat">
+        <span class="dashboard-stat-number" id="total-chapter-count">
+            0
+        </span>
+        <span class="dashboard-stat-label">
+            Total Chapters
+        </span>
+    </div>
+
+    <div class="dashboard-stat">
+        <span class="dashboard-stat-number" id="published-chapter-count">
+            0
+        </span>
+        <span class="dashboard-stat-label">
+            Published
+        </span>
+    </div>
+
+    <div class="dashboard-stat">
+        <span class="dashboard-stat-number" id="draft-chapter-count">
+            0
+        </span>
+        <span class="dashboard-stat-label">
+            Drafts
+        </span>
+    </div><div class="dashboard-stat">
+    <span
+        class="dashboard-stat-number"
+        id="scheduled-chapter-count"
+    >
+        0
+    </span>
+
+    <span class="dashboard-stat-label">
+        Scheduled
+    </span>
+</div>
+
+<div class="dashboard-stat">
+    <span class="dashboard-stat-number" id="story-read-count">0</span>
+    <span class="dashboard-stat-label">📖 Story Reads</span>
+</div>
+
+
+<div class="dashboard-stat">
+    <span class="dashboard-stat-number" id="story-like-count">
+        0
+    </span>
+    <span class="dashboard-stat-label">
+        ❤️ Story Likes
+    </span>
+</div>
+
+<div class="dashboard-stat">
+    <span class="dashboard-stat-number" id="story-follow-count">
+        0
+    </span>
+        <span class="dashboard-stat-label">
+        🔖 Story Follows
+    </span>
+</div>
+
+</div> <!-- End of story-dashboard-stats -->
+
+<div class="manager-actions-row">
+    <span class="story-status-title">Story Status</span>
+
+    <span
+        class="story-status-badge ongoing"
+        id="story-status-badge"
+    >
+        Ongoing
+    </span>
+
+    <button
+        type="button"
+        class="story-status-button"
+        id="story-status-button"
+    >
+        Mark as Completed
+    </button>
+</div>
+                        <a href="create-story.html?mode=edit" class="edit-story-button">
+    Edit Story Information
+</a>
+<a
+    href="chapter-editor.html"
+    class="continue-writing-button"
+    id="continue-writing-button"
+>
+    Continue Writing
+</a>
+                    </div>
+
+                    <a href="chapter-editor.html"
+   class="add-chapter-button"
+   id="add-chapter-button">
+    + Add New Chapter
+</a>
+
+                </div>
+
+                <p class="dv-manager-promo"><a class="start-reading-button" href="promotion-planner.html">Promotions &amp; Public Updates</a> · <a class="start-reading-button" href="writer-progress.html">My Writing Calendar</a></p>
+                <div class="chapter-list" id="chapter-list">
+
+</div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Notifications | DreavelleVerse</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="notifications-page">
+
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                DreavelleVerse
+            </a>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="discover.html">Discover</a>
+            <a href="library.html">Library</a>
+            <a href="write.html">Write</a>
+            <a href="notifications.html" id="notifications-nav-link">
+Notifications <span id="notification-count" style="margin-left:6px;background:#e63946;color:white;border-radius:12px;padding:2px 7px;font-weight:bold;" hidden></span>
+</a>
+            <a href="login.html" id="login-nav-link">Log In</a>
+
+<a
+    href="signup.html"
+    class="signup-link"
+    id="signup-nav-link"
+>
+    Sign Up
+</a>
+
+<span
+    id="user-nav"
+    style="display: none;"
+>
+    <span id="user-display-name"></span>
+
+    <button
+        type="button"
+        id="logout-button"
+    >
+        Log Out
+    </button>
+</span>
+        <a href="messages.html">Messages</a> <a href="announcements.html">Announcements</a> </nav>
+    </header>
+
+    <main>
+
+        <section class="discover-hero">
+
+            <p class="reader-welcome">
+                Stay Connected
+            </p>
+
+            <h2>Notifications</h2>
+
+            <p>
+                Keep up with the stories you follow.
+            </p>
+
+        </section>
+
+        <section class="featured-section">
+
+            <div class="section-heading">
+                <h2>Your Notifications</h2>
+
+                <p>
+                    Story updates and other notifications will appear here.
+                </p>
+            </div>
+
+            <div
+                id="notification-list"
+                class="notification-list"
+            >
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+   <script src="script.js?v=20261021-message-notifications"></script>
+
+</body>
+
+</html>

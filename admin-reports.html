@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Report Management | DreavelleVerse</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.admin-wrap{max-width:1050px;margin:35px auto;padding:20px} .admin-card{background:white;color:#19314b;border:1px solid #dce5ec;border-radius:12px;padding:20px;margin:16px 0;overflow-wrap:anywhere}
+.admin-card h2{margin-top:0} .admin-card p{margin:9px 0} .admin-card select,.admin-card button{padding:9px;margin:5px 8px 5px 0} .admin-card button{cursor:pointer} .admin-muted{color:#526779} .admin-status{font-weight:bold}
+</style>
+</head>
+<body>
+<header><div class="header-brand"><h1>DreavelleVerse</h1><p>Where Stories Come Alive.</p></div><nav><a href="index.html">Home</a><a href="login.html">Log In</a></nav></header>
+<main class="admin-wrap"><h1>Report Management</h1><p>Restricted to authorized DreavelleVerse administrators.</p>
+<p id="admin-message" role="status" aria-live="polite">Checking administrator access…</p>
+<section id="admin-content" hidden><label for="report-filter">Show: </label><select id="report-filter"><option value="all">All reports</option><option value="pending">Pending</option><option value="reviewed">Reviewed</option><option value="resolved">Resolved</option></select> <button type="button" id="admin-refresh">Refresh reports</button><div id="admin-reports"></div></section>
+<section id="cover-moderation" hidden><h2>Book Cover Moderation</h2><p>Pending submissions require manual review. No automatic image detection is enabled.</p><button type="button" id="covers-refresh">Refresh cover queue</button><p id="covers-message" role="status"></p><div id="covers-list"></div></section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="admin-reports.js?v=20261024-cover1"></script>
+</body></html>

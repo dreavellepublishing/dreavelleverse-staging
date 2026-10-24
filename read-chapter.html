@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Read Chapter | DreavelleVerse</title>
+
+    <link rel="stylesheet" href="style.css?v=20261024-auto-continue-nav">
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="header-brand">
+
+        <h1>DreavelleVerse</h1>
+        <p>Where Stories Come Alive.</p>
+
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="discover.html">Discover</a>
+        <a href="library.html">Library</a>
+        <a href="write.html">Write</a>
+        <a href="notifications.html" id="notifications-nav-link">Notifications</a>
+        <a href="login.html" id="login-nav-link">Log In</a>
+
+<a
+    href="signup.html"
+    class="signup-link"
+    id="signup-nav-link"
+>
+    Sign Up
+</a>
+
+<span
+    id="user-nav"
+    style="display: none;"
+>
+    <span id="user-display-name"></span>
+
+    <button
+        type="button"
+        id="logout-button"
+    >
+        Log Out
+    </button>
+</span>
+
+    </nav>
+
+
+</header>
+
+
+
+<main>
+
+<section class="reading-page">
+
+
+    <div class="reading-container">
+
+
+        <h1 id="reading-story-title">
+            Story Title
+        </h1>
+
+
+        <h2 id="reading-chapter-title">
+            Chapter Title
+        </h2>
+<div class="bible-verse-card" id="bible-verse-card">
+    <p class="bible-verse-label">Verse for You</p>
+
+    <p class="bible-verse-text" id="bible-verse-text">
+        A verse will appear here.
+    </p>
+
+    <p class="bible-verse-reference" id="bible-verse-reference">
+        — Bible
+    </p>
+</div>
+
+        <div class="chapter-content"
+        id="chapter-content">
+
+            Chapter content will appear here.
+
+        </div>
+
+
+<section id="dv-reader-author-corner" class="dv-author-tools" hidden aria-label="Author's Corner">
+  <div id="dv-reader-author-note" hidden><h3>✍️ Author's Note</h3><p id="dv-reader-author-note-text"></p></div>
+  <div id="dv-reader-poll" hidden><h3>📊 Reader Poll</h3><p id="dv-reader-poll-question"></p><div id="dv-reader-poll-options"></div><button type="button" id="dv-reader-vote">Submit Vote</button><p id="dv-reader-poll-message" role="status"></p><div id="dv-reader-poll-results" hidden></div></div>
+</section>
+
+<button
+    type="button"
+    id="bookmark-chapter-button"
+    class="bookmark-chapter-button"
+>
+    🔖 Bookmark Chapter
+</button>
+
+<div class="reader-notes" id="reader-notes">
+
+    <h3>My Notes</h3>
+
+    <p class="reader-notes-intro">
+        Keep private notes about this chapter.
+    </p>
+
+    <textarea
+        id="reader-notes-input"
+        class="reader-notes-input"
+        placeholder="Write a private note..."
+    ></textarea>
+
+    <button
+        type="button"
+        id="save-reader-notes-button"
+        class="save-reader-notes-button"
+    >
+        Save Note
+    </button>
+
+    <p
+        id="reader-notes-message"
+        class="reader-notes-message"
+    ></p>
+
+</div>
+
+    <h3>Chapter Comments</h3>
+
+    <p class="chapter-comments-intro">
+        Share your thoughts about this chapter.
+    </p>
+
+    <textarea
+        id="chapter-comment-input"
+        class="chapter-comment-input"
+        placeholder="Write a comment..."
+    ></textarea>
+
+    <button
+        type="button"
+        id="post-chapter-comment-button"
+        class="post-chapter-comment-button"
+    >
+        Post Comment
+    </button>
+
+    <p
+        id="chapter-comment-message"
+        class="chapter-comment-message"
+    ></p>
+
+    <div
+        id="chapter-comment-list"
+        class="chapter-comment-list"
+    ></div>
+
+</div>
+
+        <div class="reading-completion">
+            <button type="button" id="mark-completed-button" style="display: none;">Mark as Completed</button>
+        </div>
+        <div class="reading-navigation" aria-label="Chapter navigation">
+            <button type="button" disabled>← Previous Chapter</button>
+            <button type="button" disabled>Next Chapter →</button>
+        </div>
+
+    </div>
+
+
+</section>
+
+
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js?v=20261024-chapter-titles-fix"></script>
+
+
+<script defer src="chapter-engagement.js?v=20261024"></script>
+</body>
+
+</html>

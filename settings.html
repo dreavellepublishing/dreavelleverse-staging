@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Settings | DreavelleVerse</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="settings-page">
+
+    <header>
+
+        <div class="header-brand">
+            <h1>DreavelleVerse</h1>
+            <p>Where Stories Come Alive.</p>
+        </div>
+
+        <nav>
+
+            <a href="index.html">Home</a>
+            <a href="discover.html">Discover</a>
+            <a href="library.html">Library</a>
+            <a href="write.html">Write</a>
+
+            <a
+                href="notifications.html"
+                id="notifications-nav-link"
+            >
+                Notifications
+            </a>
+
+            <a
+                href="login.html"
+                id="login-nav-link"
+            >
+                Log In
+            </a>
+
+            <a
+                href="signup.html"
+                class="signup-link"
+                id="signup-nav-link"
+            >
+                Sign Up
+            </a>
+
+            <span
+                id="user-nav"
+                style="display: none;"
+            >
+                <a
+                    href="profile.html"
+                    id="user-display-name"
+                ></a>
+
+                <button
+                    type="button"
+                    id="logout-button"
+                >
+                    Log Out
+                </button>
+            </span>
+
+        </nav>
+
+    </header>
+
+
+    <main class="settings-page-content">
+
+        <section class="settings-heading">
+
+            <p>Personalize Your Experience</p>
+
+            <h2>Account Settings</h2>
+
+            <p>
+                Manage your DreavelleVerse preferences.
+            </p>
+
+        </section>
+
+
+        <!-- Account -->
+
+        <section class="settings-card">
+
+            <h3>Account</h3>
+
+            <p class="settings-description">
+                Your current DreavelleVerse account information.
+            </p>
+
+            <div class="settings-account-info">
+
+                <div>
+                    <span>Display Name</span>
+                    <strong id="settings-display-name">
+                        —
+                    </strong>
+                </div>
+
+                <div>
+                    <span>Email</span>
+                    <strong id="settings-email">
+                        —
+                    </strong>
+                </div>
+
+            </div>
+
+            <a
+                href="profile.html"
+                class="settings-link-button"
+            >
+                Go to Profile
+            </a>
+
+        </section>
+
+
+        <!-- Appearance -->
+
+        <section class="settings-card">
+
+            <h3>Appearance</h3>
+
+            <p class="settings-description">
+                Choose the color you want to use across DreavelleVerse.
+            </p>
+
+            <div class="theme-options">
+
+                <button
+                    type="button"
+                    class="theme-option theme-blue"
+                    data-theme="blue"
+                >
+                    <span></span>
+                    Blue
+                </button>
+
+                <button
+                    type="button"
+                    class="theme-option theme-purple"
+                    data-theme="purple"
+                >
+                    <span></span>
+                    Purple
+                </button>
+
+                <button
+                    type="button"
+                    class="theme-option theme-pink"
+                    data-theme="pink"
+                >
+                    <span></span>
+                    Pink
+                </button>
+
+                <button
+                    type="button"
+                    class="theme-option theme-green"
+                    data-theme="green"
+                >
+                    <span></span>
+                    Green
+                </button>
+
+                <button
+                    type="button"
+                    class="theme-option theme-burgundy"
+                    data-theme="burgundy"
+                >
+                    <span></span>
+                    Burgundy
+                </button>
+
+                <button
+                    type="button"
+                    class="theme-option theme-navy"
+                    data-theme="navy"
+                >
+                    <span></span>
+                    Navy
+                </button>
+
+            </div>
+
+        </section>
+
+</section>
+
+<!-- Reading Preferences -->
+
+<section class="settings-card">
+    <h2>Reading Preferences</h2>
+
+    <p>
+        Choose the genres you enjoy reading.
+        This will help personalize your DreavelleVerse experience.
+    </p>
+
+    <div class="genre-preferences">
+        <label>
+            <input type="checkbox" value="Romance">
+            Romance
+        </label>
+
+        <label>
+            <input type="checkbox" value="Fantasy">
+            Fantasy
+        </label>
+
+        <label>
+            <input type="checkbox" value="Mystery">
+            Mystery
+        </label>
+
+        <label>
+            <input type="checkbox" value="Thriller">
+            Thriller
+        </label>
+
+        <label>
+            <input type="checkbox" value="Adventure">
+            Adventure
+        </label>
+
+        <label>
+            <input type="checkbox" value="Science Fiction">
+            Science Fiction
+        </label>
+
+        <label>
+            <input type="checkbox" value="Horror">
+            Horror
+        </label>
+
+        <label>
+            <input type="checkbox" value="Young Adult">
+            
+            Young Adult
+        </label>
+    </div>
+
+   <button
+    type="button"
+    id="save-reading-preferences"
+>
+    Save Preferences
+</button>
+
+    <p id="reading-preferences-status"></p>
+</section>
+
+        <!-- Notifications -->
+
+        <section class="settings-card">
+
+            <h3>Notifications</h3>
+
+            <p class="settings-description">
+                Choose which DreavelleVerse updates you want to receive.
+            </p>
+
+            <label class="settings-toggle-row">
+
+                <div>
+                    <strong>Story Updates</strong>
+
+                    <p>
+                        Receive notifications when stories you follow
+                        publish new chapters.
+                    </p>
+                </div>
+
+                <input
+                    type="checkbox"
+                    id="story-notifications-setting"
+                    checked
+                >
+
+            </label>
+
+        </section>
+
+
+        <!-- Sign Out -->
+
+        <section class="settings-card">
+
+            <h3>Session</h3>
+
+            <p class="settings-description">
+                Sign out of your DreavelleVerse account on this browser.
+            </p>
+
+            <button
+                type="button"
+                id="settings-logout-button"
+                class="settings-logout-button"
+            >
+                Log Out
+            </button>
+
+        </section>
+
+    </main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

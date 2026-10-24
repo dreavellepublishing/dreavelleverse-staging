@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+  <title>My Stories | DreavelleVerse</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="my-stories-page">
+
+  <header>
+    <div class="header-brand">
+      <h1>DreavelleVerse</h1>
+      <p>Where Stories Come Alive.</p>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="discover.html">Discover</a>
+      <a href="library.html">Library</a>
+      <a href="write.html">Write</a>
+    </nav>
+  </header>
+
+  <main class="my-stories-container">
+    <div class="my-stories-header">
+      <div>
+        <h2>My Stories</h2>
+        <p>Manage your stories and continue writing.</p>
+      </div>
+      <a href="create-story.html"
+         class="start-reading-button">
+        + Create New Story
+      </a>
+    </div>
+
+    <div id="my-stories-list"
+         class="my-stories-grid">
+      <p>Loading your stories...</p>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+</body>
+</html>

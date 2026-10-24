@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Story | DreavelleVerse</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="create-story-page">
+
+    <header>
+        <div class="header-brand">
+            <h1>DreavelleVerse</h1>
+            <p>Where Stories Come Alive.</p>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="discover.html">Discover</a>
+            <a href="library.html">Library</a>
+            <a href="write.html">Write</a>
+            <a href="notifications.html" id="notifications-nav-link">Notifications</a>
+            <a href="login.html" id="login-nav-link">Log In</a>
+
+<a
+    href="signup.html"
+    class="signup-link"
+    id="signup-nav-link"
+>
+    Sign Up
+</a>
+
+<span
+    id="user-nav"
+    style="display: none;"
+>
+    <span id="user-display-name"></span>
+
+    <button
+        type="button"
+        id="logout-button"
+    >
+        Log Out
+    </button>
+</span>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="create-story-section">
+
+            <div class="create-story-container">
+
+                <p class="writer-greeting" id="story-form-greeting">Create Something New</p>
+
+                <h2 id="story-form-heading">Bring Your Story to Life.</h2>
+
+                <p class="create-story-intro" id="story-form-intro">
+                    Start with the basics. You can update your story
+                    information later.
+                </p>
+
+                <form class="story-form">
+
+                    <label for="story-title">Story Title</label>
+                    <input
+                        type="text"
+                        id="story-title"
+                        placeholder="Enter your story title"
+                    >
+<label for="story-author">Author Name</label>
+<input
+    type="text"
+    id="story-author"
+    placeholder="Enter your author name"
+    readonly
+>
+                    <label for="story-description">Story Description</label>
+                    <textarea
+                        id="story-description"
+                        rows="6"
+                        placeholder="Tell readers what your story is about..."
+                    ></textarea>
+
+                    <label for="story-genre">Genre</label>
+                    <select id="story-genre">
+                        <option value="">Choose a genre</option>
+                        <option>Romance</option>
+                        <option>Fantasy</option>
+                        <option>Mystery</option>
+                        <option>Thriller</option>
+                        <option>Science Fiction</option>
+                        <option>Young Adult</option>
+                        <option>Adventure</option>
+                        <option>Horror</option>
+                        <option>Historical Fiction</option>
+                        <option>Other</option>
+                    </select>
+<label for="story-tags">Tags / Subgenres</label>
+
+<input
+    type="text"
+    id="story-tags"
+    placeholder="Example: Young Adult, Slow Burn, Drama"
+>
+
+<p class="field-help">
+    Add words that help readers understand and discover your story.
+    Separate each tag with a comma.
+</p>
+                    <label for="story-cover">Story Cover</label>
+                    <input
+                        type="file"
+                        id="story-cover"
+                        accept="image/*"
+                    >
+
+                  <button type="button" class="save-story-button" id="save-story-button">
+    Save & Continue
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+
+</body>
+
+</html>

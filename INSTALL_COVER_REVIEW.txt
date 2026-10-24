@@ -1,0 +1,24 @@
+DREAVELLEVERSE COVER REVIEW — REVISED TRIAL PACKAGE
+
+DO NOT DEPLOY TO PRODUCTION WITHOUT STAGING TESTS. Active users depend on the existing policies.
+
+Existing setup already confirmed: dv_cover_reviews table, pending-story-covers bucket.
+
+CHANGED FILES: script.js, admin-reports.js, admin-reports.html, DREAVELLEVERSE_COVER_SECURITY_UPDATE.sql.
+The ZIP contains a full snapshot of the site for convenience; upload only changed website files.
+
+DEPLOYMENT SEQUENCE (staging first):
+1. Back up stories data, storage policies and functions.
+2. On staging Supabase, run DREAVELLEVERSE_COVER_SECURITY_UPDATE.sql.
+3. On staging GitHub Pages, deploy script.js, admin-reports.js, admin-reports.html.
+4. Test story creation with/without cover, replacement, admin approval/rejection, ordinary story edits and reading existing covers.
+5. Check the admin account can upload to the approved path. Check writer cannot directly INSERT/UPDATE public story-covers objects or change cover_url.
+6. Coordinate a short production deployment window only after staging tests succeed.
+
+IMPORTANT LIMITATIONS:
+- Manual admin review only; no automatic image analysis or notification feed.
+- Admin-browser storage copy happens before approval RPC; these steps are not atomic.
+- On failure, the browser attempts cleanup, but it can fail.
+- The SQL checks paths and ownership, not image-byte identity.
+- This is a trial workflow, not fully secure content moderation. Strong enforcement requires a trusted server-side approval process.
+- Existing public covers are not retroactively moderated.

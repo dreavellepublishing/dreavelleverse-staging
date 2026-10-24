@@ -1,0 +1,20 @@
+/* DreavelleVerse Announcements responsive two-column layout */
+.dv-ann-page{max-width:1200px;margin:0 auto;padding:28px 20px}
+.dv-ann-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:start;margin-top:24px}
+.dv-ann-panel{background:#fff;border:1px solid #ead7ed;border-radius:16px;padding:24px;box-shadow:0 6px 22px rgba(30,40,60,.05);min-width:0}
+.dv-ann-panel h3{margin-top:0;color:#9347a9}
+.dv-ann-panel form{display:flex;flex-direction:column;gap:10px}
+.dv-ann-panel label{font-weight:600;color:#123b55}
+.dv-ann-panel select,.dv-ann-panel input,.dv-ann-panel textarea{width:100%;box-sizing:border-box;border:1px solid #d8bfdc;border-radius:8px;padding:12px;background:white;font:inherit}
+.dv-ann-panel textarea{resize:vertical;min-height:140px}
+.dv-ann-panel form button{align-self:flex-start;background:#914cb0;color:white;border:0;border-radius:8px;padding:12px 20px;font-weight:700;cursor:pointer}
+.dv-ann-panel form button:disabled{opacity:.5;cursor:not-allowed}
+.dv-ann-count{font-weight:600;color:#914cb0}
+.dv-ann-filters{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.dv-ann-filter{border:1px solid #d9b9e4;background:white;color:#753c8b;border-radius:20px;padding:8px 14px;cursor:pointer}
+.dv-ann-filter.active{background:#914cb0;color:white}
+.dv-ann-item{background:#fbf7fc;border:1px solid #ead7ed;border-radius:12px;padding:16px;margin:0 0 14px;overflow-wrap:anywhere}
+.dv-ann-item h4{margin:0 0 8px;color:#173c53}
+.dv-ann-item p{margin:7px 0;white-space:pre-wrap}
+.dv-ann-item small{color:#677282}
+@media(max-width:760px){.dv-ann-layout{grid-template-columns:1fr}.dv-ann-page{padding:18px 12px}.dv-ann-panel{padding:18px}}

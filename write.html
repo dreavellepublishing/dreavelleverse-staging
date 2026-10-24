@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Write | DreavelleVerse</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="writer-page">
+
+    <header>
+        <div class="header-brand">
+            <h1>DreavelleVerse</h1>
+            <p>Where Stories Come Alive.</p>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="discover.html">Discover</a>
+            <a href="library.html">Library</a>
+            <a href="write.html">Write</a>
+            <a href="notifications.html" id="notifications-nav-link">Notifications</a>
+            <a href="login.html" id="login-nav-link">Log In</a>
+
+<a
+    href="signup.html"
+    class="signup-link"
+    id="signup-nav-link"
+>
+    Sign Up
+</a>
+
+<span
+    id="user-nav"
+    style="display: none;"
+>
+    <span id="user-display-name"></span>
+
+    <button
+        type="button"
+        id="logout-button"
+    >
+        Log Out
+    </button>
+</span>
+        <a href="messages.html">Messages</a>
+<a href="announcements.html">Announcements</a>
+<a href="promotion-planner.html">Promotions</a>
+</nav>
+    </header>
+
+    <main>
+
+        <section class="writer-welcome">
+
+            <p class="writer-greeting">
+                Welcome, Writer.
+            </p>
+
+            <h2>Your Story Belongs Here.</h2>
+
+            <p class="writer-message">
+                Write freely. Build your world. Find your readers.
+                DreavelleVerse is your space to bring your stories to life.
+            </p>
+
+           <div class="writer-story-actions">
+    <a href="create-story.html" class="create-story-button" id="create-new-story-button">
+        Create New Story
+    </a>
+
+    <a href="my-stories.html"" class="create-story-button" id="manage-story-button">
+        Manage Your Story
+    </a>
+</div>
+
+        </section>
+
+        <section class="writer-stories-section">
+    <div id="writer-story-list"></div>
+</section>
+
+    </main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+    
+</body>
+
+</html>

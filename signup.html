@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Sign Up | DreavelleVerse</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1 class="logo">
+            <a href="index.html">DreavelleVerse</a>
+        </h1>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="discover.html">Discover</a>
+            <a href="library.html">Library</a>
+            <a href="write.html">Write</a>
+            <a href="notifications.html">Notifications</a>
+            <a href="#">Log In</a>
+            <a href="signup.html" class="signup-link">Sign Up</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="signup-page">
+
+            <div class="signup-container">
+
+                <p class="signup-welcome">
+                    Join DreavelleVerse
+                </p>
+
+                <h2>Create Your Account</h2>
+
+                <p class="signup-intro">
+                    Read, write, and become part of a world where stories come alive.
+                </p>
+
+                <form id="signup-form">
+
+                    <label for="signup-name">
+                        Display Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="signup-name"
+                        placeholder="Enter your display name"
+                        required
+                    >
+
+                    <label for="signup-email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="signup-email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                    <label for="signup-password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="signup-password"
+                        placeholder="Create a password"
+                        required
+                    >
+
+                    <label for="signup-confirm-password">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="signup-confirm-password"
+                        placeholder="Confirm your password"
+                        required
+                    >
+
+<div style="margin: 15px 0; font-size: 14px;">
+  <label style="display: flex; align-items: flex-start; gap: 10px;">
+    <input
+      type="checkbox"
+      id="signup-terms"
+      required
+      style="width: auto; margin-top: 4px;"
+    >
+    <span>
+      I agree to the
+      <a href="terms.html" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+      and acknowledge the
+      <a href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+    </span>
+  </label>
+</div>
+
+                    <button
+                        type="submit"
+                        class="signup-button"
+                    >
+                        Create Account
+                    </button>
+
+                    <p
+                        id="signup-message"
+                        class="signup-message"
+                    ></p>
+
+                </form>
+
+                <p class="signup-login-text">
+                    Already have an account?
+                    <a href="login.html">Log In</a>
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+<script src="reading-access.js?v=20261024-gate1"></script>
+</body>
+
+</html>

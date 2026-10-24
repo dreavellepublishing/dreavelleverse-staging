@@ -1,0 +1,363 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Promotion & Update Planner | DreavelleVerse</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .dv-planner {
+      max-width: 1000px;
+      margin: 35px auto;
+      padding: 10px 20px 45px;
+      box-sizing: border-box;
+    }
+
+    .planner-heading {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .planner-heading h2 {
+      color: #8050ad;
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .planner-heading p {
+      color: #687080;
+      line-height: 1.7;
+    }
+
+    .planner-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      margin-bottom: 22px;
+    }
+
+    .planner-card {
+      background: #ffffff;
+      border: 1px solid #ece4f5;
+      border-radius: 18px;
+      padding: 25px;
+      box-shadow: 0 5px 20px rgba(100, 65, 140, 0.06);
+      min-width: 0;
+    }
+
+    .planner-card h3 {
+      color: #8050ad;
+      font-size: 21px;
+      margin: 0 0 12px;
+    }
+
+    .planner-card p {
+      color: #596174;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .planner-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .planner-highlight {
+      background: #f6f0fc;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 15px 0;
+      color: #60417f;
+      line-height: 1.7;
+    }
+
+    .planner-link {
+      display: inline-block;
+      padding: 11px 17px;
+      background: #8050ad;
+      color: white !important;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .planner-link:hover {
+      background: #693d96;
+    }
+
+    .planner-wide {
+      margin-bottom: 22px;
+    }
+
+    #dv-planner-status {
+      background: #f6f0fc;
+      color: #68468a;
+      padding: 14px;
+      border-radius: 10px;
+      margin-bottom: 22px;
+      overflow-wrap: anywhere;
+    }
+
+    #dv-tickets,
+    #dv-my-promos {
+      margin-top: 15px;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    .dv-planner-item {
+      background: #faf7fd;
+      border: 1px solid #eee4f7;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 12px 0;
+    }
+
+    .dv-planner-item select {
+      max-width: 100%;
+      padding: 10px;
+      border: 1px solid #d9c8e8;
+      border-radius: 8px;
+      margin: 8px 8px 8px 0;
+    }
+
+    .dv-planner-item button {
+      background: #8050ad;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 11px 16px;
+      cursor: pointer;
+    }
+
+    .dv-planner-item button:hover {
+      background: #693d96;
+    }
+
+    .dv-planner-item button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .planner-footer {
+      text-align: center;
+      margin-top: 25px;
+      color: #687080;
+      line-height: 1.7;
+    }
+
+    .planner-footer a {
+      color: #8050ad;
+      font-weight: 600;
+    }
+
+    @media (max-width: 700px) {
+      .planner-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .dv-planner {
+        padding: 10px 15px 30px;
+      }
+
+      .planner-heading h2 {
+        font-size: 25px;
+      }
+
+      .planner-card {
+        padding: 20px;
+      }
+    }
+  
+    .dv-private-label{font-size:.72rem;background:#f3eaf9;border-radius:30px;padding:5px 10px;vertical-align:middle}
+    .dv-promotion-entry{display:flex;gap:14px;align-items:flex-start}
+    .dv-promotion-entry strong{display:block;color:#553577;font-size:1.05rem}
+    .dv-promotion-meta{font-size:.9rem;color:#626173;margin-top:4px}
+    .dv-promotion-status{display:inline-block;border-radius:20px;padding:2px 9px;background:#e7f4ed;color:#286643;font-size:.75rem;font-weight:700}
+    .dv-promotion-status.upcoming{background:#f1ebfa;color:#6e42a1}
+    .dv-promotion-status.expired{background:#f0f0f0;color:#555}
+    .dv-progress-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:15px 0}
+    .dv-progress-stats>div{background:#f8f2fd;padding:15px;border-radius:12px;text-align:center}
+    .dv-progress-stats strong{display:block;font-size:1.35rem;color:#654091}
+    .dv-progress-stats span{font-size:.8rem;color:#646174}
+    .dv-progress-toolbar{display:flex;align-items:center;justify-content:center;gap:20px}
+    .dv-progress-toolbar button{border:1px solid #d8c8e8;background:white;border-radius:8px;padding:7px 14px;cursor:pointer}
+    .dv-progress-calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-top:14px}
+    .dv-progress-calendar>strong{text-align:center;font-size:.8rem}
+    /* Calendar Progress: only recorded writing days receive the strong theme color. */
+    body .dv-progress-calendar button.dv-progress-day{
+      min-height:65px; border:1px solid var(--theme-light, #e5f3f7);
+      border-radius:9px; background:var(--theme-soft, #f3fafc);
+      color:var(--theme-dark, #00506b); cursor:pointer;
+      display:flex;flex-direction:column;align-items:center;
+      justify-content:center;padding:4px;transition:background .15s ease,transform .15s ease;
+    }
+    .dv-progress-day small{font-size:.65rem}
+    body .dv-progress-calendar button.dv-progress-day.active{
+      background:var(--theme-main, #006080);
+      border-color:var(--theme-dark, #00506b);
+      color:#fff;
+    }
+    body .dv-progress-calendar button.dv-progress-day.active small{color:#fff}
+    body .dv-progress-calendar button.dv-progress-day:hover{transform:translateY(-1px)}
+    body .dv-progress-calendar button.dv-progress-day:focus-visible{
+      outline:3px solid var(--theme-dark, #00506b);outline-offset:2px;
+    }
+    @media(max-width:600px){.dv-progress-calendar{gap:3px}.dv-progress-day{min-height:51px;padding:2px}.dv-progress-day small{font-size:.55rem}.dv-progress-stats>div{padding:8px}}
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-brand">
+    <h1>DreavelleVerse</h1>
+    <p>Where Stories Come Alive.</p>
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="discover.html">Discover</a>
+    <a href="write.html">Write</a>
+    <a href="notifications.html">Notifications</a>
+    <a href="profile.html">My Profile</a>
+    <a href="messages.html">Messages</a>
+    <a href="announcements.html">Announcements</a>
+  </nav>
+</header>
+
+<main>
+  <section class="dv-planner">
+
+    <div class="planner-heading">
+      <h2>Promotion & Update Planner</h2>
+      <p>
+        Celebrate your writing consistency, earn promotion
+        tickets, and give your stories more visibility.
+      </p>
+    </div>
+
+    <p id="dv-planner-status" role="status">
+      Checking your account…
+    </p>
+<section class="planner-card" id="story-promotion-dashboard">
+
+  <h2>My Story Promotions</h2>
+
+  <p>
+    Select a story to monitor its writing progress,
+    promotion tickets, and promotion history.
+  </p>
+
+  <label for="promotion-story-select">
+    Select Your Story
+  </label>
+
+  <select id="promotion-story-select">
+    <option value="">Loading your stories...</option>
+  </select>
+
+  <div id="promotion-story-progress"
+       aria-live="polite">
+    Choose a story to view its promotion progress.
+  </div>
+
+</section>
+    <div class="planner-grid">
+
+      <div class="planner-card">
+        <div class="planner-icon">✍️</div>
+        <h3>Earn Promotion Tickets</h3>
+
+        <p>
+          Stay consistent with your writing and unlock
+          opportunities to promote your stories.
+        </p>
+
+        <div class="planner-highlight">
+          <strong>Small Promotion Ticket</strong>
+          <p>Earn after 2 consecutive qualifying writing days.</p>
+
+          <strong>Big Promotion Ticket</strong>
+          <p>Earn after 5 consecutive qualifying writing days.</p>
+        </div>
+
+        <p>
+          A qualifying day requires writing 100+ new words
+          or publishing a chapter.
+        </p>
+
+        <a class="planner-link" href="writer-progress.html">
+          View My Writing Calendar
+        </a>
+      </div>
+
+      <div class="planner-card">
+        <div class="planner-icon">🎟️</div>
+        <h3>Redeem Your Tickets</h3>
+
+        <p>
+          Select one of your published stories and redeem
+          an available promotion ticket.
+        </p>
+
+        <div class="planner-highlight">
+          Tickets expire 3 days after being earned.
+          Each redeemed promotion banner runs for 3 days.
+        </div>
+
+        <div id="dv-tickets" aria-live="polite">
+          Loading tickets…
+        </div>
+      </div>
+
+    </div>
+
+    <div class="planner-card planner-wide">
+      <div class="planner-icon">🌟</div>
+      <h3>Your Promotions</h3>
+
+      <p>
+        View the promotions you have redeemed
+        for your published stories.
+      </p>
+
+      <div id="dv-my-promos" aria-live="polite">
+        Loading promotions…
+      </div>
+    </div>
+
+    <div class="planner-card planner-wide" id="dv-private-progress-section" hidden>
+      <div class="planner-icon">📅</div>
+      <h3>Calendar Progress <span class="dv-private-label">Private</span></h3>
+      <p>Your combined writing activity across all your stories. Only you can see this dashboard.</p>
+      <div class="dv-progress-stats">
+        <div><strong id="dv-progress-words">—</strong><span>Words this month</span></div>
+        <div><strong id="dv-progress-days">—</strong><span>Active days</span></div>
+        <div><strong id="dv-progress-chapters">—</strong><span>Chapters published</span></div>
+      </div>
+      <div class="dv-progress-toolbar">
+        <button type="button" id="dv-progress-prev" aria-label="Previous month">‹</button>
+        <h4 id="dv-progress-month"></h4>
+        <button type="button" id="dv-progress-next" aria-label="Next month">›</button>
+      </div>
+      <div id="dv-progress-calendar" class="dv-progress-calendar" aria-label="Private combined writing calendar"></div>
+      <p id="dv-progress-detail" aria-live="polite">Choose a day to view your progress.</p>
+    </div>
+
+    <div class="planner-footer">
+      Keep writing, stay consistent, and let your stories shine.
+    </div>
+
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+<script src="promotion-planner.js?v=20261024-private-progress"></script>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chapter Editor | DreavelleVerse</title>
+    <link rel="stylesheet" href="style.css?v=20261024-author-corner-layout">
+</head>
+
+<body id="chapter-editor-page">
+
+    <header>
+        <div class="header-brand">
+            <h1>DreavelleVerse</h1>
+            <p>Where Stories Come Alive.</p>
+        </div>
+
+        <nav>
+    <a href="index.html">Home</a>
+    <a href="discover.html">Discover</a>
+    <a href="library.html">Library</a>
+    <a href="write.html">Write</a>
+    <a href="notifications.html" id="notifications-nav-link">Notifications</a>
+
+    <a href="login.html" id="login-nav-link">Log In</a>
+
+    <a href="signup.html" class="signup-link" id="signup-nav-link">
+        Sign Up
+    </a>
+
+    <span id="user-nav" style="display: none;">
+        <span id="user-display-name"></span>
+
+        <button type="button" id="logout-button">
+            Log Out
+        </button>
+    </span>
+</nav>
+    </header>
+
+    <main class="editor-page">
+
+        <div class="editor-container">
+
+           <div class="editor-topbar">
+
+    <div>
+        <a href="story-manager.html" class="back-to-story">
+            ← Back to Story
+        </a>
+
+        <p class="editor-story-name">Untitled Story</p>
+        <p class="editor-chapter-number">Chapter 1</p>
+        <p class="save-status">Draft</p>
+    </div>
+
+    <button class="save-draft-button">
+        Save Draft
+    </button>
+
+</div>
+
+            <input
+                type="text"
+                class="chapter-title-input"
+                placeholder="Chapter Title"
+            >
+<div class="bible-verse-card" id="bible-verse-card">
+    <p class="bible-verse-label">Verse for You</p>
+
+    <p class="bible-verse-text" id="bible-verse-text">
+        A verse will appear here.
+    </p>
+
+    <p class="bible-verse-reference" id="bible-verse-reference">
+        — Bible
+    </p>
+</div>
+            <textarea
+                class="chapter-writing-area"
+                placeholder="Start writing your chapter..."
+            ></textarea>
+
+           <section class="dv-author-tools" aria-labelledby="dv-author-tools-heading">
+             <div class="dv-author-heading"><div><h3 id="dv-author-tools-heading">✍️ Author's Corner <span class="dv-author-optional">Optional</span></h3><p class="dv-author-description">Share a message with your readers or invite them to join a chapter poll.</p></div></div>
+             <label for="dv-author-note">Author's Note</label>
+             <textarea id="dv-author-note" rows="5" placeholder="Share a message with your readers (optional)"></textarea>
+             <div class="dv-author-count-row"><span>Maximum 300 words</span><span id="dv-author-note-count">0 / 300 words</span></div>
+             <div class="dv-author-poll-area"><label class="dv-poll-toggle"><input type="checkbox" id="dv-poll-enabled"> <span>Add a reader poll to this chapter <small>(Optional)</small></span></label><p class="dv-author-poll-help">Ask one question with 2–4 choices.</p>
+             <div id="dv-poll-editor" hidden>
+               <label for="dv-poll-question">Poll question</label>
+               <input id="dv-poll-question" type="text" maxlength="200" placeholder="What do you think happens next?">
+               <div id="dv-poll-options">
+                 <input type="text" maxlength="120" placeholder="Choice 1" aria-label="Poll choice 1">
+                 <input type="text" maxlength="120" placeholder="Choice 2" aria-label="Poll choice 2">
+                 <input type="text" maxlength="120" placeholder="Choice 3 (optional)" aria-label="Poll choice 3">
+                 <input type="text" maxlength="120" placeholder="Choice 4 (optional)" aria-label="Poll choice 4">
+               </div>
+             </div>
+             </div>
+                           <section id="dv-author-poll-results-panel" class="dv-author-poll-results-panel" hidden aria-label="Reader Poll Results" style="margin-top:18px;padding:18px;border:1px solid #e3cfea;border-radius:12px;background:#fff;">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+                  <h4 style="margin:0;color:#914cb0;">📊 Reader Poll Results</h4>
+                  <button type="button" id="dv-author-refresh-results" style="border:1px solid #914cb0;color:#914cb0;background:white;border-radius:8px;padding:8px 12px;cursor:pointer;">Refresh results</button>
+                </div>
+                <p id="dv-author-results-question" style="margin:12px 0 4px;font-weight:600;"></p>
+                <p id="dv-author-results-total" style="margin:0 0 14px;color:#62556a;"></p>
+                <div id="dv-author-results-bars"></div>
+                <p id="dv-author-results-message" role="status" aria-live="polite"></p>
+              </section>
+<div class="dv-author-actions"><button type="button" id="dv-save-author-tools">Save Author's Corner</button></div>
+             <p id="dv-author-tools-status" role="status" aria-live="polite"></p>
+             <p class="dv-author-hint">Save the chapter first. Your note and poll appear to readers only when this chapter is published. Saving here is separate from saving the chapter.</p>
+           </section>
+
+           <div class="chapter-schedule-section" id="chapter-schedule-section">
+    <p class="chapter-schedule-title">Schedule Chapter</p>
+
+    <div class="chapter-schedule-controls">
+        <div class="schedule-field">
+            <label for="schedule-date">Publish Date</label>
+            <input
+                type="date"
+                id="schedule-date"
+                class="schedule-input"
+            >
+        </div>
+
+        <div class="schedule-field">
+            <label for="schedule-time">Publish Time</label>
+            <input
+                type="time"
+                id="schedule-time"
+                class="schedule-input"
+            >
+        </div>
+
+        <button
+            type="button"
+            id="schedule-chapter-button"
+            class="schedule-chapter-button"
+        >
+            Schedule Chapter
+        </button>
+
+        <button
+    type="button"
+    id="reschedule-chapter-button"
+    class="schedule-chapter-button"
+    style="display: none;"
+>
+    Reschedule
+</button>
+
+<button
+    type="button"
+    id="cancel-schedule-button"
+    class="cancel-schedule-button"
+    style="display: none;"
+>
+    Cancel Schedule
+</button>
+
+    </div>
+</div>
+            <div class="editor-bottom">
+    <span class="word-count">0 words</span>
+
+    <div class="chapter-action-buttons">
+        <button
+            type="button"
+            class="delete-chapter-button"
+            id="delete-chapter-button"
+        >
+            Delete Chapter
+        </button>
+
+        <button
+            type="button"
+            class="publish-chapter-button"
+        >
+            Publish Chapter
+        </button>
+        <button
+    type="button"
+    class="unpublish-chapter-button"
+    id="unpublish-chapter-button"
+>
+    Unpublish Chapter
+</button>
+
+    </div>
+</div>
+
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+<script defer src="chapter-engagement.js?v=20261024"></script>
+    <script defer src="author-poll-results.js?v=20261024-1"></script>
+</body>
+
+</html>
+

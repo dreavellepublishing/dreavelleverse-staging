@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Discover Stories | DreavelleVerse</title>
+    <link rel="stylesheet" href="style.css?v=20261023-discover-redesign">
+</head>
+
+<body id="discover-page">
+
+    <header>
+        <div class="header-brand">
+            <h1>DreavelleVerse</h1>
+            <p>Where Stories Come Alive.</p>
+        </div>
+
+        <nav>
+           <a href="index.html">Home</a>
+<a href="discover.html">Discover</a>
+<a href="library.html">Library</a>
+<a href="write.html">Write</a>
+<a href="notifications.html" id="notifications-nav-link">Notifications</a>
+            <a href="login.html" id="login-nav-link">Log In</a>
+
+<a
+    href="signup.html"
+    class="signup-link"
+    id="signup-nav-link"
+>
+    Sign Up
+</a>
+
+<span
+    id="user-nav"
+    style="display: none;"
+>
+    <span id="user-display-name"></span>
+
+    <button
+        type="button"
+        id="logout-button"
+    >
+        Log Out
+    </button>
+</span>
+        <a href="messages.html">Messages</a> <a href="announcements.html">Announcements</a> </nav>
+    </header>
+
+    <main>
+
+        <section class="discover-hero">
+
+            <p class="reader-welcome">
+                Welcome home, Reader.
+            </p>
+
+            <h2>Find Your Next Story</h2>
+
+            <p>
+                Discover new worlds, unforgettable characters,
+                and stories waiting to become part of yours.
+            </p>
+<div class="discover-search-tabs" role="group" aria-label="Search category">
+<button type="button" id="search-stories-tab" class="active" aria-pressed="true">Search Stories</button>
+<button type="button" id="search-users-tab" aria-pressed="false">Search Users</button>
+</div>
+<div class="story-search">
+    <input
+        type="text"
+        id="discover-search-input"
+        placeholder="Search by title, author, or genre..."
+    >
+    <button type="button" id="discover-search-button">
+        Search
+    </button>
+</div>
+        </section>
+
+        <section id="discover-users-section" class="featured-section" hidden>
+<div class="section-heading"><h2>Find Readers &amp; Writers</h2><p>Search for people by their display name.</p></div>
+<div id="discover-users-results" class="discover-users-results" role="status" aria-live="polite">Enter a name above to find people.</div>
+</section>
+
+        <!-- Redeemed-ticket promotions: only active records from dv_promotions -->
+        <section class="featured-section dv-discover-block" aria-labelledby="dv-small-title">
+          <div class="section-heading"><h2 id="dv-small-title">✨ Small Spotlight Promotions</h2><p>Stories promoted through redeemed tickets.</p></div>
+          <div class="dv-carousel-shell"><button type="button" class="dv-carousel-arrow" id="dv-small-prev" aria-label="Previous small promotions">‹</button><div id="dv-small-promos" class="dv-promotion-grid dv-small-list" aria-live="polite">Loading promotions…</div><button type="button" class="dv-carousel-arrow" id="dv-small-next" aria-label="Next small promotions">›</button></div>
+          <p class="dv-page-status" id="dv-small-page" aria-live="polite"></p>
+        </section>
+        <section class="featured-section dv-discover-block" aria-labelledby="dv-big-title">
+          <div class="section-heading"><h2 id="dv-big-title">🌟 Big Banner Promotions</h2><p>Premium spotlight space for eligible redeemed promotions.</p></div>
+          <div class="dv-carousel-shell"><button type="button" class="dv-carousel-arrow" id="dv-big-prev" aria-label="Previous banners">‹</button><div id="dv-big-promos" class="dv-promotion-grid dv-big-promos" aria-live="polite">Loading banners…</div><button type="button" class="dv-carousel-arrow" id="dv-big-next" aria-label="Next banners">›</button></div>
+          <p class="dv-page-status" id="dv-big-page" aria-live="polite"></p>
+          <p><a href="promotion-planner.html" class="start-reading-button">Promote Your Story</a></p>
+        </section>
+        <section class="featured-section dv-discover-block" aria-labelledby="dv-weekly-title">
+          <div class="section-heading"><h2 id="dv-weekly-title">🏆 Weekly Spotlight — Top 5</h2><p>Previous week's results, refreshed automatically each Monday by the existing ranking system.</p></div>
+          <h3>Writers of the Week</h3><div id="dv-weekly-writers" class="dv-weekly-podium" aria-live="polite">Loading weekly writers…</div>
+          <h3>Stories of the Week</h3><div id="dv-weekly-stories" class="dv-weekly-podium" aria-live="polite">Loading weekly stories…</div>
+        </section>
+        <section class="featured-section dv-discover-block" id="discover-stories-section">
+          <div class="section-heading"><h2>Featured Stories</h2><p>Ten stories to discover, rotating daily.</p></div>
+          <div class="story-grid dv-featured-grid" id="discover-stories"></div>
+        </section>
+        <section class="featured-section dv-discover-block dv-recommendations" aria-labelledby="dv-recommend-title">
+          <div class="section-heading"><h2 id="dv-recommend-title">Recommended for You</h2><p>Find readers and writers to connect with.</p></div>
+          <div id="dv-suggest-people" class="dv-suggestion-grid dv-people-grid" aria-live="polite">Loading suggestions…</div>
+        </section>
+        <section class="featured-section dv-discover-block dv-recommendations" aria-labelledby="dv-suggest-title">
+          <div class="section-heading"><h2 id="dv-suggest-title">Suggested Stories</h2><p>Five more stories worth reading.</p></div>
+          <div id="dv-suggest-stories" class="dv-suggestion-grid dv-stories-grid" aria-live="polite">Loading suggestions…</div>
+        </section>
+    </main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js?v=20261023-discover-redesign"></script>
+<script src="discover-extras.js?v=20261023-redesign"></script>
+<script src="weekly-spotlight.js?v=20261023-redesign"></script>
+<script src="reading-access.js?v=20261024-search-profile-gate"></script>
+</body>
+
+</html>
