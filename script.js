@@ -7306,3 +7306,63 @@ if (document.getElementById('dv-my-social')) {
     if(session?.user) await window.dvFollowLists.mount(document.getElementById('dv-my-social'),session.user.id);
   })();
 }
+
+/* DreavelleVerse — Admin Book Cover Review Queue */
+(async function loadAdminCoverReviews() {
+    const section = document.getElementById("admin-cover-approvals");
+    if (!section) return;
+
+    const count = document.getElementById("admin-cover-pending-count");
+    const list = document.getElementById("admin-cover-review-list");
+
+    const { data: { user }, error: authError } =
+        await supabaseClient.auth.getUser();
+
+    if (authError || !user) return;
+
+    const { data: isAdmin, error: adminError } =
+        await supabaseClient.rpc("is_story_report_admin");
+
+    if (adminError || isAdmin !== true) return;
+
+    section.style.display = "block";
+    count.textContent = "Loading pending covers...";
+
+    const { data: reviews, error } = await supabaseClient
+        .from("dv_cover_reviews")
+        .select("id, story_id, writer_id, storage_path, created_at")
+        .eq("status", "pending")
+        .order("created_at", { ascending: true });
+
+    if (error) {
+        count.textContent = "Unable to load pending covers.";
+        console.error("Cover review error:", error);
+        return;
+    }
+
+    count.textContent =
+        `${reviews.length} book cover(s) awaiting approval`;
+
+    list.replaceChildren();
+
+    for (const review of reviews) {
+        const card = document.createElement("div");
+        card.className = "writer-story-card";
+
+        const heading = document.createElement("h3");
+        heading.textContent = "Pending Book Cover";
+
+        const story = document.createElement("p");
+        story.textContent = `Story ID: ${review.story_id}`;
+
+        const submitted = document.createElement("p");
+        submitted.textContent =
+            `Submitted: ${new Date(review.created_at).toLocaleString()}`;
+
+        const status = document.createElement("p");
+        status.textContent = "Status: Pending administrator review";
+
+        card.append(heading, story, submitted, status);
+        list.appendChild(card);
+    }
+})();
