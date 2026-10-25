@@ -7341,7 +7341,23 @@ async function loadAdminCoverReviews() {
     }
 
     list.replaceChildren();
-    const pendingCount = reviews.filter(review => review.status === "pending").length;
+    const { data: publishedStories, error: publishedError } =
+    await supabaseClient
+        .from("stories")
+        .select("cover_url");
+
+if (publishedError) {
+    console.error("Could not check published covers:", publishedError);
+    return;
+}
+
+const visibleReviews = reviews.filter(review =>
+    review.status === "pending" ||
+    !publishedStories.some(story =>
+        story.cover_url?.includes(`approved-${review.id}.`)
+    )
+);
+   const pendingCount = visibleReviews.filter(review => review.status === "pending").length;
     count.textContent = `${pendingCount} book cover(s) awaiting approval`;
 
     async function publishApprovedCover(reviewId) {
@@ -7355,7 +7371,7 @@ async function loadAdminCoverReviews() {
         return data;
     }
 
-    for (const review of reviews) {
+   for (const review of visibleReviews) {
         const card = document.createElement("div");
         card.className = "writer-story-card";
 
