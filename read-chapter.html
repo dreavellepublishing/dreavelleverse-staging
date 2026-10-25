@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="style.css?v=20261024-auto-continue-nav">
 
+<link rel="stylesheet" href="dv-features.css?v=20261025">
 </head>
 
 
@@ -92,13 +93,16 @@
     </p>
 </div>
 
+        <section id="dv-mature-gate" class="dv-mature-gate" hidden aria-live="polite"></section>
         <div class="chapter-content"
-        id="chapter-content">
+        id="chapter-content" hidden>
 
             Chapter content will appear here.
 
         </div>
 
+
+<section id="dv-chapter-stars" class="dv-chapter-stars" aria-label="Support this chapter"><button type="button" id="dv-star-button" disabled>☆ Star this chapter</button> <strong id="dv-chapter-star-count">—</strong> stars <span id="dv-star-message" role="status"></span></section>
 
 <section id="dv-reader-author-corner" class="dv-author-tools" hidden aria-label="Author's Corner">
   <div id="dv-reader-author-note" hidden><h3>✍️ Author's Note</h3><p id="dv-reader-author-note-text"></p></div>
@@ -192,7 +196,9 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="script.js?v=20261024-chapter-titles-fix"></script>
+<script src="script.js?v=20261025-mature-stars"></script>
+<script defer src="dv-mature-reader.js?v=20261025"></script>
+<script defer src="dv-chapter-stars.js?v=20261025"></script>
 
 
 <script defer src="chapter-engagement.js?v=20261024"></script>

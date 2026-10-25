@@ -1,0 +1,10 @@
+/* Chapter stars and mature content warnings */
+.dv-chapter-stars,.dv-mature-editor,.dv-mature-gate,.dv-manager-stars{margin:18px 0;padding:16px;border:1px solid #dbc8e8;border-radius:12px;background:#faf6fc;color:#352845}
+.dv-chapter-stars button,.dv-mature-gate button,.dv-mature-editor button{padding:10px 16px;border:1px solid #9864ad;border-radius:8px;background:#fff;color:#633779;cursor:pointer;margin:5px}
+.dv-chapter-stars button[aria-pressed="true"]{background:#fff2c9;color:#785500;border-color:#e5b53e}
+.dv-mature-gate{border-color:#c9949e;background:#fff7f8}
+.dv-mature-gate h3{margin-top:0}
+.dv-mature-editor label{display:block;margin:8px 0}
+.dv-mature-editor select{padding:8px;max-width:100%}
+.dv-manager-stars{font-weight:600}
+#chapter-content[hidden],#dv-mature-gate[hidden]{display:none!important}

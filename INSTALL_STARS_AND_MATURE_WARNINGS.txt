@@ -1,0 +1,31 @@
+DREAVELLEVERSE STAGING — CHAPTER STARS + MATURE CONTENT WARNINGS
+
+1. BACK UP your staging repository and staging Supabase project.
+2. Open your STAGING Supabase SQL Editor (project mdsxnmoezhnruojxnhcu).
+3. Run DV_STARS_AND_MATURE_SETUP.sql once. Read any SQL errors before proceeding.
+4. Upload the contents of this ZIP to the STAGING GitHub repository only.
+   Upload files into the repository root, not a nested folder. Commit the changes.
+5. Hard refresh read-story.html, read-chapter.html, chapter-editor.html and story-manager.html.
+6. Test with two accounts: writer creates/publishes a chapter; separate reader stars and unstars it.
+7. Verify public story statistics (Reads, Likes, Follows, Stars) and Manage Story chapter counts.
+8. In chapter-editor.html, choose and SAVE a chapter warning before publishing.
+9. Test a mature advisory and an 18+ chapter with an adult and under-18 date of birth.
+
+IMPORTANT LIMITATIONS
+- The age check is self-declared, NOT identity verification or strong age assurance.
+- Existing chapter text is served through public Supabase chapter queries; the reader gate is a
+  front-end warning, NOT server-enforced access control. A technically capable person could
+  bypass it. Do not describe this as secure exclusion of minors.
+- Warnings are AUTHOR-MANAGED. The simple text keyword hint is not comprehensive AI moderation.
+  Automated server-side detection and review require a separate trusted backend and policies.
+- Warnings are stored separately from chapter saves. The writer should explicitly click
+  "Save chapter warning" and verify the success message before publishing.
+- SQL must be installed before the new features work. Existing likes/follows are not replaced.
+- This package is prepared and syntax-checked, but cannot be end-to-end tested against your
+  staging Supabase credentials or browser here. Test in staging before any production rollout.
+- R18 chapters are not automatically filtered out of search or listings by this update.
+
+FILES ADDED: dv-chapter-stars.js, dv-mature-editor.js, dv-mature-reader.js,
+ dv-features.css, DV_STARS_AND_MATURE_SETUP.sql, this instruction file.
+FILES UPDATED: read-story.html, read-chapter.html, chapter-editor.html,
+ story-manager.html, reader-story-stats.js.

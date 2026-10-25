@@ -7,6 +7,7 @@
 
     <title>Manage Story | DreavelleVerse</title>
     <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="dv-features.css?v=20261025">
 </head>
 
 <body id="story-manager-page">
@@ -148,6 +149,8 @@
 
 </div> <!-- End of story-dashboard-stats -->
 
+<div class="dv-manager-stars" aria-label="Total chapter stars">⭐ Chapter Stars: <strong id="dv-manager-total-stars">—</strong></div>
+
 <div class="manager-actions-row">
     <span class="story-status-title">Story Status</span>
 
@@ -199,6 +202,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="script.js"></script>
+<script defer src="dv-chapter-stars.js?v=20261025"></script>
 
 </body>
 
