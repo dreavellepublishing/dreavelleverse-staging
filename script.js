@@ -2303,7 +2303,11 @@ if (discoverStories) {
             add("p", `Tags: ${Array.isArray(story.tags) ? story.tags.join(", ") : (story.tags || "—")}`, "discover-story-tags");
             const read = document.createElement("a"); read.className = "start-reading-button";
             read.href = `read-story.html?id=${encodeURIComponent(story.id)}`; read.textContent = "Start Reading"; card.append(read);
+            const stats = document.createElement("div");
+            stats.className = "dv-story-badges";
+            card.insertBefore(stats, read);
             discoverStories.append(card);
+            if (window.dvLoadStoryStats) window.dvLoadStoryStats(story.id, { container: stats });
         }
     })().catch(error => { console.error(error); discoverStories.textContent = "Unable to load stories right now."; });
 }
@@ -5831,12 +5835,17 @@ storyDetails.className = "writer-story-details";
 const storyStats = document.createElement("div");
 storyStats.className = "writer-story-stats";
 
-storyStats.append(
-    status,
-    completionStatus,
-    reads,
-    likes
-);
+const stars = document.createElement("span");
+stars.className = "writer-story-stars";
+stars.textContent = "⭐ — Stars";
+const follows = document.createElement("span");
+follows.className = "writer-story-follows";
+follows.textContent = "👥 — Follows";
+storyStats.append(status, completionStatus, reads, likes, stars, follows);
+// These counters are read-only; chapter voting and story follow/like handlers are unchanged.
+if (window.dvLoadStoryStats) {
+    window.dvLoadStoryStats(story.id, { stars, follows });
+}
 
 storyDetails.append(
     title,

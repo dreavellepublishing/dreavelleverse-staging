@@ -11,7 +11,7 @@
   const link = (label, href) => { const a=el('a','start-reading-button',label);a.href=href;return a; };
   const image = (src, alt, cls='') => { if(!/^https?:\/\//i.test(src||''))return null;const img=el('img',cls);img.src=src;img.alt=alt;img.loading='lazy';return img; };
   const rotate = (items, count) => { if(!items.length)return [];const start=Math.floor(Date.now()/86400000)%items.length;return Array.from({length:Math.min(count,items.length)},(_,i)=>items[(start+i)%items.length]); };
-  const storyCard = s => {const card=el('article','dv-suggestion-card');const img=image(s.cover_url,`${s.title||'Story'} cover`,'dv-story-thumb');if(img)card.append(img);card.append(el('h4','',s.title||'Untitled Story'),el('p','',`By ${s.author||'Unknown Author'}`),link('Start Reading',url(s.id)));return card;};
+  const storyCard = s => {const card=el('article','dv-suggestion-card');const img=image(s.cover_url,`${s.title||'Story'} cover`,'dv-story-thumb');if(img)card.append(img);card.append(el('h4','',s.title||'Untitled Story'),el('p','',`By ${s.author||'Unknown Author'}`));const stats=el('div','dv-story-badges');card.append(stats,link('Start Reading',url(s.id)));if(window.dvLoadStoryStats)window.dvLoadStoryStats(s.id,{container:stats});return card;};
   async function recommendations(){
     const {data:{user}}=await db.auth.getUser();
     const [{data:people,error:pe},{data:stories,error:se}]=await Promise.all([

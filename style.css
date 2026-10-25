@@ -3653,3 +3653,7 @@ body .dv-author-tools #dv-save-author-tools{display:inline-flex;align-items:cent
 body .dv-author-tools #dv-author-tools-status{margin:12px 0 0;overflow-wrap:anywhere}
 body .dv-author-tools .dv-author-hint{margin:10px 0 0;font-size:.83rem;color:#625b6c;line-height:1.5;opacity:1}
 @media(max-width:600px){body .dv-author-tools .dv-author-actions{display:block}body .dv-author-tools #dv-save-author-tools{width:100%}}
+
+/* Unified story popularity badges — staging */
+.dv-story-badges{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0;align-items:center}
+.dv-story-stat-badge{display:inline-flex;align-items:center;border-radius:999px;padding:6px 10px;background:#f3edf8;color:#654879;font-size:12px;font-weight:600;white-space:nowrap}
