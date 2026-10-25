@@ -7366,3 +7366,9 @@ if (document.getElementById('dv-my-social')) {
         list.appendChild(card);
     }
 })();
+
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", loadAdminCoverReviews);
+} else {
+    loadAdminCoverReviews();
+}
