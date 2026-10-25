@@ -7308,7 +7308,7 @@ if (document.getElementById('dv-my-social')) {
 }
 
 /* DreavelleVerse — Admin Book Cover Review Queue */
-(async function loadAdminCoverReviews() {
+async function loadAdminCoverReviews() {
     const section = document.getElementById("admin-cover-approvals");
     if (!section) return;
 
@@ -7447,7 +7447,7 @@ card.appendChild(actions);
         card.append(heading, story, submitted, status);
         list.appendChild(card);
     }
-})();
+}
 
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", loadAdminCoverReviews);
