@@ -7387,8 +7387,29 @@ actions.style.marginTop = "12px";
 const approveButton = document.createElement("button");
 approveButton.type = "button";
 approveButton.textContent = "✓ Approve";
-approveButton.addEventListener("click", () => {
-    alert("Approve button clicked — staging test only.");
+approveButton.addEventListener("click", async () => {
+    if (!confirm("Approve this book cover?")) return;
+
+    approveButton.disabled = true;
+
+    const { data, error } = await supabaseClient
+        .from("dv_cover_reviews")
+        .update({
+            status: "approved",
+            reviewed_at: new Date().toISOString()
+        })
+        .eq("id", review.id)
+        .eq("status", "pending")
+        .select("id");
+
+    if (error || !data || data.length !== 1) {
+        alert("Approval failed: " + (error?.message || "No review was updated."));
+        approveButton.disabled = false;
+        return;
+    }
+
+    alert("Book cover approved successfully!");
+    await loadAdminCoverReviews();
 });
 const rejectButton = document.createElement("button");
 rejectButton.type = "button";
