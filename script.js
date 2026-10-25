@@ -7314,137 +7314,169 @@ async function loadAdminCoverReviews() {
 
     const count = document.getElementById("admin-cover-pending-count");
     const list = document.getElementById("admin-cover-review-list");
+    if (!count || !list) return;
 
     const { data: { user }, error: authError } =
         await supabaseClient.auth.getUser();
-
     if (authError || !user) return;
 
     const { data: isAdmin, error: adminError } =
         await supabaseClient.rpc("is_story_report_admin");
-
     if (adminError || isAdmin !== true) return;
 
     section.style.display = "block";
-    count.textContent = "Loading pending covers...";
+    count.textContent = "Loading book cover reviews...";
 
+    // Include approved reviews so a failed publish can be retried.
     const { data: reviews, error } = await supabaseClient
         .from("dv_cover_reviews")
-        .select("id, story_id, writer_id, storage_path, created_at")
-        .eq("status", "pending")
+        .select("id, story_id, writer_id, storage_path, created_at, status")
+        .in("status", ["pending", "approved"])
         .order("created_at", { ascending: true });
 
     if (error) {
-        count.textContent = "Unable to load pending covers.";
+        count.textContent = "Unable to load book cover reviews.";
         console.error("Cover review error:", error);
         return;
     }
 
-    count.textContent =
-        `${reviews.length} book cover(s) awaiting approval`;
-
     list.replaceChildren();
+    const pendingCount = reviews.filter(review => review.status === "pending").length;
+    count.textContent = `${pendingCount} book cover(s) awaiting approval`;
+
+    async function publishApprovedCover(reviewId) {
+        const { data, error } = await supabaseClient.functions.invoke(
+            "publish-approved-cover",
+            { body: { review_id: reviewId } }
+        );
+        if (error || !data?.success) {
+            throw new Error(error?.message || data?.error || "Cover publishing failed.");
+        }
+        return data;
+    }
 
     for (const review of reviews) {
         const card = document.createElement("div");
         card.className = "writer-story-card";
 
         const heading = document.createElement("h3");
-        heading.textContent = "Pending Book Cover";
+        heading.textContent = review.status === "pending"
+            ? "Pending Book Cover" : "Approved Book Cover";
 
         const story = document.createElement("p");
         story.textContent = `Story ID: ${review.story_id}`;
 
         const submitted = document.createElement("p");
-        submitted.textContent =
-            `Submitted: ${new Date(review.created_at).toLocaleString()}`;
+        submitted.textContent = `Submitted: ${new Date(review.created_at).toLocaleString()}`;
 
         const status = document.createElement("p");
-        status.textContent = "Status: Pending administrator review";
+        status.textContent = review.status === "pending"
+            ? "Status: Pending administrator review"
+            : "Status: Approved — publish or retry if needed";
 
         const coverPreview = document.createElement("img");
-coverPreview.alt = "Book cover awaiting review";
-coverPreview.style.width = "140px";
-coverPreview.style.maxHeight = "200px";
-coverPreview.style.objectFit = "contain";
-coverPreview.style.borderRadius = "8px";
+        coverPreview.alt = "Book cover submitted for review";
+        coverPreview.style.width = "140px";
+        coverPreview.style.maxHeight = "200px";
+        coverPreview.style.objectFit = "contain";
+        coverPreview.style.borderRadius = "8px";
 
-const { data: coverData, error: coverError } =
-  await supabaseClient.storage
-    .from("pending-story-covers")
-    .createSignedUrl(review.storage_path, 300);
+        const { data: coverData, error: coverError } =
+            await supabaseClient.storage
+                .from("pending-story-covers")
+                .createSignedUrl(review.storage_path, 300);
+        if (!coverError && coverData?.signedUrl) {
+            coverPreview.src = coverData.signedUrl;
+            card.appendChild(coverPreview);
+        }
 
-if (!coverError && coverData?.signedUrl) {
-  coverPreview.src = coverData.signedUrl;
-  card.appendChild(coverPreview);
-}
-        
         const actions = document.createElement("div");
-actions.style.display = "flex";
-actions.style.gap = "10px";
-actions.style.marginTop = "12px";
+        actions.style.display = "flex";
+        actions.style.gap = "10px";
+        actions.style.marginTop = "12px";
 
-const approveButton = document.createElement("button");
-approveButton.type = "button";
-approveButton.textContent = "✓ Approve";
-approveButton.addEventListener("click", async () => {
-    if (!confirm("Approve this book cover?")) return;
+        const approveButton = document.createElement("button");
+        approveButton.type = "button";
+        approveButton.textContent = review.status === "pending"
+            ? "✓ Approve & Publish" : "↻ Publish / Retry";
 
-    approveButton.disabled = true;
+        const rejectButton = document.createElement("button");
+        rejectButton.type = "button";
+        rejectButton.textContent = "✕ Reject";
 
-    const { data, error } = await supabaseClient
-        .from("dv_cover_reviews")
-        .update({
-            status: "approved",
-            reviewed_at: new Date().toISOString()
-        })
-        .eq("id", review.id)
-        .eq("status", "pending")
-        .select("id");
+        approveButton.addEventListener("click", async () => {
+            const isPending = review.status === "pending";
+            if (!confirm(isPending
+                ? "Approve and publish this book cover?"
+                : "Publish or retry this approved book cover?")) return;
 
-    if (error || !data || data.length !== 1) {
-        alert("Approval failed: " + (error?.message || "No review was updated."));
-        approveButton.disabled = false;
-        return;
-    }
+            approveButton.disabled = true;
+            rejectButton.disabled = true;
+            status.textContent = isPending ? "Approving cover..." : "Publishing cover...";
 
-    alert("Book cover approved successfully!");
-    await loadAdminCoverReviews();
-});
-const rejectButton = document.createElement("button");
-rejectButton.type = "button";
-rejectButton.textContent = "✕ Reject";
-rejectButton.addEventListener("click", async () => {
-    if (!confirm("Reject this book cover?")) return;
+            try {
+                if (isPending) {
+                    const { data, error } = await supabaseClient
+                        .from("dv_cover_reviews")
+                        .update({
+                            status: "approved",
+                            reviewed_at: new Date().toISOString()
+                        })
+                        .eq("id", review.id)
+                        .eq("status", "pending")
+                        .select("id");
+                    if (error || !data || data.length !== 1) {
+                        throw new Error(error?.message || "No pending review was updated.");
+                    }
+                    review.status = "approved";
+                }
 
-    rejectButton.disabled = true;
+                status.textContent = "Publishing approved cover...";
+                await publishApprovedCover(review.id);
+                alert("Book cover approved and published successfully!");
+                await loadAdminCoverReviews();
+            } catch (err) {
+                console.error("Cover approval/publishing error:", err);
+                status.textContent = review.status === "approved"
+                    ? "Approved, but publishing failed. Retry after checking the error."
+                    : "Approval failed. Please try again.";
+                alert("Cover publishing error: " + (err?.message || "Unknown error"));
+                approveButton.textContent = review.status === "approved"
+                    ? "↻ Publish / Retry" : "✓ Approve & Publish";
+                approveButton.disabled = false;
+                rejectButton.disabled = review.status !== "pending";
+            }
+        });
 
-    const { data, error } = await supabaseClient
-        .from("dv_cover_reviews")
-        .update({
-            status: "rejected",
-            reviewed_at: new Date().toISOString()
-        })
-        .eq("id", review.id)
-        .eq("status", "pending")
-        .select("id");
+        if (review.status === "pending") {
+            rejectButton.addEventListener("click", async () => {
+                if (!confirm("Reject this book cover?")) return;
+                rejectButton.disabled = true;
+                approveButton.disabled = true;
+                const { data, error } = await supabaseClient
+                    .from("dv_cover_reviews")
+                    .update({
+                        status: "rejected",
+                        reviewed_at: new Date().toISOString()
+                    })
+                    .eq("id", review.id)
+                    .eq("status", "pending")
+                    .select("id");
+                if (error || !data || data.length !== 1) {
+                    alert("Rejection failed: " + (error?.message || "No review was updated."));
+                    rejectButton.disabled = false;
+                    approveButton.disabled = false;
+                    return;
+                }
+                alert("Book cover rejected successfully!");
+                await loadAdminCoverReviews();
+            });
+            actions.append(approveButton, rejectButton);
+        } else {
+            actions.appendChild(approveButton);
+        }
 
-    if (error || !data || data.length !== 1) {
-        alert(
-            "Rejection failed: " +
-            (error?.message || "No review was updated.")
-        );
-        rejectButton.disabled = false;
-        return;
-    }
-
-    alert("Book cover rejected successfully!");
-    await loadAdminCoverReviews();
-});
-        
-actions.append(approveButton, rejectButton);
-card.appendChild(actions);
-        card.append(heading, story, submitted, status);
+        card.append(heading, story, submitted, status, actions);
         list.appendChild(card);
     }
 }
