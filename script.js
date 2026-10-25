@@ -7393,7 +7393,10 @@ approveButton.addEventListener("click", () => {
 const rejectButton = document.createElement("button");
 rejectButton.type = "button";
 rejectButton.textContent = "✕ Reject";
-
+rejectButton.addEventListener("click", () => {
+    alert("Reject button clicked — staging test only.");
+});
+        
 actions.append(approveButton, rejectButton);
 card.appendChild(actions);
         card.append(heading, story, submitted, status);
