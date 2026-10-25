@@ -7362,6 +7362,22 @@ if (document.getElementById('dv-my-social')) {
         const status = document.createElement("p");
         status.textContent = "Status: Pending administrator review";
 
+        const coverPreview = document.createElement("img");
+coverPreview.alt = "Book cover awaiting review";
+coverPreview.style.width = "140px";
+coverPreview.style.maxHeight = "200px";
+coverPreview.style.objectFit = "contain";
+coverPreview.style.borderRadius = "8px";
+
+const { data: coverData, error: coverError } =
+  await supabaseClient.storage
+    .from("pending-story-covers")
+    .createSignedUrl(review.storage_path, 300);
+
+if (!coverError && coverData?.signedUrl) {
+  coverPreview.src = coverData.signedUrl;
+  card.appendChild(coverPreview);
+}
         card.append(heading, story, submitted, status);
         list.appendChild(card);
     }
