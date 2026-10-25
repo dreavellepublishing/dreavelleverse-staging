@@ -7387,7 +7387,9 @@ actions.style.marginTop = "12px";
 const approveButton = document.createElement("button");
 approveButton.type = "button";
 approveButton.textContent = "✓ Approve";
-
+approveButton.addEventListener("click", () => {
+    alert("Approve button clicked — staging test only.");
+});
 const rejectButton = document.createElement("button");
 rejectButton.type = "button";
 rejectButton.textContent = "✕ Reject";
