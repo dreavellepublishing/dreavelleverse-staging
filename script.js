@@ -7414,8 +7414,32 @@ approveButton.addEventListener("click", async () => {
 const rejectButton = document.createElement("button");
 rejectButton.type = "button";
 rejectButton.textContent = "✕ Reject";
-rejectButton.addEventListener("click", () => {
-    alert("Reject button clicked — staging test only.");
+rejectButton.addEventListener("click", async () => {
+    if (!confirm("Reject this book cover?")) return;
+
+    rejectButton.disabled = true;
+
+    const { data, error } = await supabaseClient
+        .from("dv_cover_reviews")
+        .update({
+            status: "rejected",
+            reviewed_at: new Date().toISOString()
+        })
+        .eq("id", review.id)
+        .eq("status", "pending")
+        .select("id");
+
+    if (error || !data || data.length !== 1) {
+        alert(
+            "Rejection failed: " +
+            (error?.message || "No review was updated.")
+        );
+        rejectButton.disabled = false;
+        return;
+    }
+
+    alert("Book cover rejected successfully!");
+    await loadAdminCoverReviews();
 });
         
 actions.append(approveButton, rejectButton);
