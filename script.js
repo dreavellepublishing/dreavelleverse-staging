@@ -7378,6 +7378,22 @@ if (!coverError && coverData?.signedUrl) {
   coverPreview.src = coverData.signedUrl;
   card.appendChild(coverPreview);
 }
+        
+        const actions = document.createElement("div");
+actions.style.display = "flex";
+actions.style.gap = "10px";
+actions.style.marginTop = "12px";
+
+const approveButton = document.createElement("button");
+approveButton.type = "button";
+approveButton.textContent = "✓ Approve";
+
+const rejectButton = document.createElement("button");
+rejectButton.type = "button";
+rejectButton.textContent = "✕ Reject";
+
+actions.append(approveButton, rejectButton);
+card.appendChild(actions);
         card.append(heading, story, submitted, status);
         list.appendChild(card);
     }
